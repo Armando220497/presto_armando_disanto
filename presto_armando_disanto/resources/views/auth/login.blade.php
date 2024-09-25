@@ -18,8 +18,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="loginEmail1" class="form-label">Indirizzo E-mail</label>
-                        <input type="email" class="form-control" id="loginEmail" aria-describedby="email">
-                        <div id="email" class="form-control" id="loginEmail" name="email"></div>
+                        <input type="email" class="form-control" id="loginEmail" name='email'>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>

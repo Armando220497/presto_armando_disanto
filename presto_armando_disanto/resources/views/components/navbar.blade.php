@@ -10,6 +10,26 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('homepage') }}">Home</a>
                 </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" aria-current="page" href="{{ route('article.index') }}">Tutti gli articoli</a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Categorie
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach ($categories as $category)
+                            <li><a class="dropdown-item"
+                                    href="{{ route('byCategory', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                            </li>
+                            @if (!$loop->last)
+                                <hr class="dropdown-divider">
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -18,7 +38,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                            <li> <a class="dropdown-item" href="{{ route('create.article') }}">Pubblica un articolo</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('create.article') }}">Pubblica un articolo</a>
+                            </li>
                             <a class="dropdown-item" href="{{ route('create.article') }}"
                                 onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
                     </li>

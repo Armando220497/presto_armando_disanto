@@ -9,20 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title',
-        'description',
-        'price',
-        'category_id',
-        'user_id'
-    ];
+    protected $fillable = ['title', 'description', 'price', 'category_id', 'user_id'];
+
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category(): BelongsTo
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

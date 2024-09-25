@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Models\Category; // Assicurati di importare il modello Category
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,12 @@ class CreateArticleForm extends Component
     public $category;
     public $article;
 
+    // Aggiungi il metodo mount
+    public function mount()
+    {
+        $this->category = null; // Imposta a null per avere l'opzione predefinita
+    }
+
     public function store()
     {
         $this->validate();
@@ -26,20 +33,17 @@ class CreateArticleForm extends Component
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
-            'category' => $this->category,
+            'category_id' => $this->category,
             'user_id' => Auth::id()
-
         ]);
 
-        $this->reset();
-
+        $this->reset(['title', 'description', 'price', 'category']);
         session()->flash('success', 'Articolo creato correttamente');
     }
 
-
-
     public function render()
     {
-        return view('livewire.create-article-form');
+        $categories = Category::all(); // Carica le categorie
+        return view('livewire.create-article-form', compact('categories')); // Passa le categorie alla vista
     }
 }
