@@ -77,6 +77,10 @@
                             <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
                         </ul>
                     </li>
+                    <x-_locale lang="it" />
+                    <x-_locale lang="en" />
+                    <x-_locale lang="es" />
+
                 @endauth
             </ul>
         </div>
