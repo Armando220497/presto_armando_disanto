@@ -11,9 +11,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
-
                     <a class="nav-link" aria-current="page" href="{{ route('article.index') }}">Tutti gli articoli</a>
-
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -30,6 +28,15 @@
                         @endforeach
                     </ul>
                 </li>
+                <form class="d-flex ms-auto" role="search" action="{{ route('article.search') }}" method="GET">
+                    <div class="input-group">
+                        <input type="search" name="query" class="form-control" placeholder="Search"
+                            aria-label="search">
+                        <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">
+                            Search
+                        </button>
+                    </div>
+                </form>
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -38,15 +45,15 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                            <li> <a class="dropdown-item" href="{{ route('create.article') }}">Pubblica un articolo</a>
+                                <a class="dropdown-item" href="{{ route('create.article') }}">Pubblica un articolo</a>
                             </li>
-                            <a class="dropdown-item" href="{{ route('create.article') }}"
-                                onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
-
+                            <li>
+                                <a class="dropdown-item" href="{{ route('create.article') }}"
+                                    onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a>
+                            </li>
+                        </ul>
+                        <form action="{{ route('logout') }}" method="post" class="d-none" id="form-logout">@csrf</form>
                     </li>
-                    <form action="{{ route('logout') }}" method="post" class="d-none" id="form-logout">@csrf</form>
-                </ul>
-                @auth
                     @if (Auth::user()->is_revisor)
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
@@ -56,24 +63,21 @@
                             </a>
                         </li>
                     @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Ciao, Ospite
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Accedi</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
+                        </ul>
+                    </li>
                 @endauth
-                </li>
-            @else
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Ciao, Ospite <!-- Modifica qui per evitare l'errore -->
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Accedi</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
-                    </ul>
-                </li>
-            @endauth
-
             </ul>
         </div>
     </div>
