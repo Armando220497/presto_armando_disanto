@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Jobs\ResizeImage;
 use App\Models\Article;
 use App\Models\Category; // Assicurati di importare il modello Category
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
 
 class CreateArticleForm extends Component
 {
@@ -29,6 +31,7 @@ class CreateArticleForm extends Component
     public function mount()
     {
         $this->category = null; // Imposta a null per avere l'opzione predefinita
+        $this->images = [];
     }
 
     public function store()
@@ -44,12 +47,15 @@ class CreateArticleForm extends Component
 
         if (count($this->images) > 0) {
             foreach ($this->images as $image) {
-                $this->article->images()->create(['path' => $image->store('images', 'public')]);
+                $newFilename = "articles/{$this->article->id}";
+                $newImage =   $this->article->images()->create(['path' => $image->store($newFilename, 'public')]);
+                dispatch(new ResizeImage($newImage->path, 300, 300));
             }
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
 
-        $this->reset(['title', 'description', 'price', 'category', 'images']);
         session()->flash('success', 'Articolo creato correttamente');
+        $this->reset(['title', 'description', 'price', 'category', 'images']);
     }
 
     public function render()
