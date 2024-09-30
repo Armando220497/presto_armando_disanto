@@ -3,8 +3,9 @@
 namespace App\Livewire;
 
 use App\Jobs\ResizeImage;
+use App\Jobs\GoogleVisionLabelImage;
 use App\Models\Article;
-use App\Models\Category; // Assicurati di importare il modello Category
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,6 @@ class CreateArticleForm extends Component
 {
     use WithFileUploads;
 
-
-
     #[Validate('required|min:5')]
     public $title;
     #[Validate('required|min:10')]
@@ -26,11 +25,12 @@ class CreateArticleForm extends Component
     #[Validate('required')]
     public $category;
     public $article;
+    public $images = [];
+    public $temporary_images;
 
-    // Aggiungi il metodo mount
     public function mount()
     {
-        $this->category = null; // Imposta a null per avere l'opzione predefinita
+        $this->category = null;
         $this->images = [];
     }
 
@@ -47,11 +47,18 @@ class CreateArticleForm extends Component
 
         if (count($this->images) > 0) {
             foreach ($this->images as $image) {
-                $newFilename = "articles/{$this->article->id}";
-                $newImage =   $this->article->images()->create(['path' => $image->store($newFilename, 'public')]);
+                $newFileName = "articles/{$this->article->id}";
+                $newImage = $this->article->images()->create(['path' => $image->store($newFileName, 'public')]);
+
+                // Dispatch del job per ridimensionare l'immagine
                 dispatch(new ResizeImage($newImage->path, 300, 300));
+
+                // Dispatch del job per Google Vision Label Detection
+                dispatch(new GoogleVisionLabelImage($newImage->id)); // Modificato da GoogleVisionSafeSearch a GoogleVisionLabelImage
             }
-            File::deleteDirectory(storage_path('/app/livewire-tmp'));
+
+            // Cancella la directory temporanea usata da Livewire
+            File::deleteDirectory(storage_path('app/livewire-tmp'));
         }
 
         session()->flash('success', 'Articolo creato correttamente');
@@ -63,9 +70,6 @@ class CreateArticleForm extends Component
         $categories = Category::all(); // Carica le categorie
         return view('livewire.create-article-form', compact('categories')); // Passa le categorie alla vista
     }
-
-    public $images = [];
-    public $temporary_images;
 
     public function updatedTemporaryImages()
     {
