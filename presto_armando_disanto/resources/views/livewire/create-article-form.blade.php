@@ -1,5 +1,4 @@
 <div>
-
     @if (session()->has('success'))
         <div class="alert alert-success text-center">
             {{ session('success') }}
@@ -8,7 +7,7 @@
 
     <form class="bg-body-tertiary shadow rounded p-5 my-5" wire:submit.prevent="store">
         <div class="mb-3">
-            <label for="title" class="form-label">Titolo:</label>
+            <label for="title" class="form-label">{{ __('ui.title') }}</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                 wire:model="title">
             @error('title')
@@ -16,7 +15,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Descrizione:</label>
+            <label for="description" class="form-label">{{ __('ui.description') }}</label>
             <textarea id="description" cols="30" rows="10" class="form-control @error('description') is-invalid @enderror"
                 wire:model="description"></textarea>
             @error('description')
@@ -24,7 +23,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Prezzo:</label>
+            <label for="price" class="form-label">{{ __('ui.price') }}</label>
             <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                 wire:model="price">
             @error('price')
@@ -33,7 +32,7 @@
         </div>
         <div class="mb-3">
             <select id="category" wire:model="category" class="form-control @error('category') is-invalid @enderror">
-                <option value="" disabled selected>Seleziona una categoria</option> <!-- Opzione predefinita -->
+                <option value="" disabled selected>{{ __('ui.select_category') }}</option>
                 @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}" {{ $category === $cat->id ? 'selected' : '' }}>
                         {{ $cat->name }}</option>
@@ -45,7 +44,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="temporary_images" class="form-label">Carica Immagini:</label>
+            <label for="temporary_images" class="form-label">{{ __('ui.upload_images') }}</label>
             <input type="file" wire:model.live="temporary_images" multiple
                 class="form-control @error('temporary_images') is-invalid @enderror" id="temporary_images" />
             @error('temporary_images')
@@ -54,7 +53,7 @@
 
             @if (!empty($images))
                 <div class="row">
-                    <p>Anteprima Foto:</p>
+                    <p>{{ __('ui.image_preview') }}</p>
                     <div class="row border border-4 border-success rounded shadow py-4">
                         @foreach ($images as $key => $image)
                             <div class="col-12 flex-column align-items-center my-3">
@@ -71,8 +70,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Crea</button>
+            <button type="submit" class="btn btn-primary">{{ __('ui.create') }}</button>
         </div>
     </form>
-
 </div>

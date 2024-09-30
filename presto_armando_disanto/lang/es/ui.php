@@ -1,5 +1,36 @@
 <?php
 return [
+    'presto' => 'Presto.it',
+    'home' => 'Inicio',
     'all_articles' => 'Todos los artículos',
-    'no_articles' => 'No se han creado artículos todavía',
+    'categories' => 'Categorías',
+    'search' => 'Buscar',
+    'hello_user' => 'Hola, :name',
+    'publish_article' => 'Publicar un artículo',
+    'logout' => 'Cerrar sesión',
+    'revisor_zone' => 'Zona de revisor',
+    'hello_guest' => 'Hola, Invitado',
+    'login' => 'Iniciar sesión',
+    'register' => 'Registrarse',
+    'no_articles' => 'No hay artículos que correspondan a tu búsqueda',
+    'detail' => 'Detalle',
+    'category_unavailable' => 'Categoría no disponible',
+    'success' => '¡Artículo creado con éxito!',
+    'title' => 'Título:',
+    'description' => 'Descripción:',
+    'price' => 'Precio:',
+    'select_category' => 'Selecciona una categoría',
+    'upload_images' => 'Cargar Imágenes:',
+    'create' => 'Crear',
+    'image_preview' => 'Vista previa de la imagen:',
+    'error_message' => 'Se ha producido un error.',
+    'success_message' => '¡Operación completada con éxito!',
+    'welcome' => 'Bienvenido a Presto.it',
+
+    'category_articles' => 'Artículos de la categoría',
+    'no_articles_category' => 'No se han creado artículos para esta categoría aún',
+    'search_results' => 'Resultados de búsqueda para',
+    'no_matching_articles' => 'No hay artículos que coincidan con tu búsqueda',
+
+
 ];

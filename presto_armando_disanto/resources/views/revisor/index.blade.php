@@ -40,7 +40,6 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-2">
                                                             <div class="text-center mx-auto {{ $image->adult }}">
-                                                                <!-- Aggiungi qui il contenuto per l'adult rating -->
                                                             </div>
                                                         </div>
                                                         <div class="col-10">Adult</div>
@@ -48,7 +47,6 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-2">
                                                             <div class="text-center mx-auto {{ $image->violence }}">
-                                                                <!-- Aggiungi qui il contenuto per il violence rating -->
                                                             </div>
                                                         </div>
                                                         <div class="col-10">Violence</div>
@@ -56,7 +54,6 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-2">
                                                             <div class="text-center mx-auto {{ $image->spoof }}">
-                                                                <!-- Aggiungi qui il contenuto per il spoof rating -->
                                                             </div>
                                                         </div>
                                                         <div class="col-10">Spoof</div>
@@ -64,7 +61,6 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-2">
                                                             <div class="text-center mx-auto {{ $image->racy }}">
-                                                                <!-- Aggiungi qui il contenuto per il racy rating -->
                                                             </div>
                                                         </div>
                                                         <div class="col-10">Racy</div>
@@ -72,7 +68,6 @@
                                                     <div class="row justify-content-center">
                                                         <div class="col-2">
                                                             <div class="text-center mx-auto {{ $image->medical }}">
-                                                                <!-- Aggiungi qui il contenuto per il medical rating -->
                                                             </div>
                                                         </div>
                                                         <div class="col-10">Medical</div>

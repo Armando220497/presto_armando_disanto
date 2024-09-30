@@ -11,6 +11,5 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(CategorySeeder::class); // Chiama il seeder per le categorie
-        // Puoi aggiungere altri seeders qui
     }
 }

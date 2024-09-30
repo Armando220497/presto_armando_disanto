@@ -1,5 +1,4 @@
 <x-layout>
-
     @if (session()->has('errorMessage'))
         <div class="alert alert-danger text-center shadow rounded w-50">
             {{ session('errorMessage') }}
@@ -11,13 +10,14 @@
             {{ session('message') }}
         </div>
     @endif
-    <div class="container-fluid text-center bg-body-teritary">
+
+    <div class="container-fluid text-center bg-body-tertiary">
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-12 col-md-6">
-                <h1 class="display-4">Presto.it</h1>
+                <h1 class="display-4">{{ __('ui.welcome') }}</h1>
                 <div class="my-3">
                     @auth
-                        <a class="btn btn-dark" href="{{ route('create.article') }}">Pubblica un articolo</a>
+                        <a class="btn btn-dark" href="{{ route('create.article') }}">{{ __('ui.create_article') }}</a>
                     @endauth
                 </div>
             </div>
@@ -32,11 +32,9 @@
         @empty
             <div class="col-12">
                 <h3 class="text-center">
-                    Non sono ancora stati caricati articoli
+                    {{ __('ui.no_articles') }}
                 </h3>
             </div>
         @endforelse
     </div>
-
-
 </x-layout>
