@@ -1,4 +1,4 @@
-<layout>
+<x-layout>
     <div class="container-fluid">
         <div class="row py-5 justify-content-center align-items-center text-center">
             <div class="col-12">
@@ -20,4 +20,4 @@
     <div class="d-flex justify-content-center">
         <div>{{ $articles->links() }}</div>
     </div>
-</layout>
+</x-layout>
