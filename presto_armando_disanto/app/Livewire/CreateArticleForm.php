@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use Spatie\Image\Enums\Unit;
+
 use App\Jobs\RemoveFaces;
 use App\Models\Article;
 use Livewire\Component;
