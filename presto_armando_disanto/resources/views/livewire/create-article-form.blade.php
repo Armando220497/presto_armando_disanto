@@ -5,9 +5,9 @@
         </div>
     @endif
 
-    <form class="bg-body-tertiary shadow rounded p-5 my-5" wire:submit.prevent="store">
+    <form class="bg-body-custom shadow rounded p-5 my-5" wire:submit.prevent="store">
         <div class="mb-3">
-            <label for="title" class="form-label">{{ __('ui.title') }}</label>
+            <label for="title" class="form-label ">{{ __('ui.title') }}</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                 wire:model="title">
             @error('title')
@@ -54,7 +54,7 @@
             @if (!empty($images))
                 <div class="row">
                     <p>{{ __('ui.image_preview') }}</p>
-                    <div class="row border border-4 border-success rounded shadow py-4">
+                    <div class="row border border-4 border-light rounded shadow py-4">
                         @foreach ($images as $key => $image)
                             <div class="col-12 flex-column align-items-center my-3">
                                 <div class="img-preview mx-auto shadow rounded"

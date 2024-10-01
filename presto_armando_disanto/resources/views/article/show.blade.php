@@ -38,7 +38,7 @@
             </div>
 
             <div class="col-12 col-md-6 mb-3 text-center">
-                <h2 class="display-5"><span class="fw-bold">Titolo</span> {{ $article->title }}</h2>
+
                 <h4 class="fw-bold">Prezzo: {{ $article->price }} Eur</h4>
                 <h5>Descrizione</h5>
                 <p>{{ $article->description }}</p>

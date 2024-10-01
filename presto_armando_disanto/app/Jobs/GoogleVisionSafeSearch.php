@@ -26,7 +26,7 @@ class GoogleVisionSafeSearch implements ShouldQueue
         $i = Image::find($this->article_image_id);
         if (!$i) return;
         $image = file_get_contents(storage_path('app/public/' . $i->path));
-        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credentials.json'));
+        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credential.json'));
 
         $imageAnnotator = new ImageAnnotatorClient();
         $response = $imageAnnotator->safeSearchDetection($image);
@@ -39,14 +39,7 @@ class GoogleVisionSafeSearch implements ShouldQueue
         $violence = $safe->getViolence();
         $racy = $safe->getRacy();
 
-        $likelihoodName = [
-            'UNKNOWN' => 'bi bi-circle-fill',
-            'VERY_UNLIKELY' => 'bi bi-check-circle',
-            'UNLIKELY' => 'bi bi-check-circle',
-            'POSSIBLE' => 'bi bi-check-circle-fill',
-            'LIKELY' => 'bi bi-exclamation-triangle-fill',
-            'VERY_LIKELY' => 'bi bi-exclamation-triangle-fill',
-        ];
+        $likelihoodName = ['bi bi-circle-fill', 'bi bi-check-circle', 'bi bi-check-circle', 'bi bi-check-circle-fill', 'bi bi-exclamation-triangle-fill', 'bi bi-exclamation-triangle-fill',];
 
         $i->adult = $likelihoodName[$adult];
         $i->spoof = $likelihoodName[$spoof];

@@ -1,3 +1,9 @@
 @import '/resources/css/style.css';
+@import '/resources/css/all_articles.css';
+@import '/resources/css/public-article.css';
+@import '/resources/css/navbar.css';
+@import '/resources/css/revisor-dashboard.css';
+@import '/resources/css/footer.css';
+@import '/resources/css/card.css';
 @import 'bootstrap';
 @import 'bootstrap-icons';

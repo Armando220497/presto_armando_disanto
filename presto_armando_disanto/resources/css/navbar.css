@@ -1,0 +1,35 @@
+.navbar {
+    background-color: #C6E4EF;
+}
+
+.btn-custom {
+    background-color: #256F78 !important;
+    color: white !important;
+}
+
+.input-group .btn-custom {
+    margin-left: 5px;
+}
+
+.input-group .btn-custom:hover {
+    background-color: #EE922B !important;
+    color: white;
+}
+
+.nav-link.btn-custom:hover {
+    background-color: #EE922B !important;
+    /* Colore al passaggio del mouse */
+    color: white;
+    /* Mantieni il colore del testo bianco */
+}
+
+.input-group input {
+    margin: 0;
+    background-color: white;
+    border: 1px solid #256F78;
+}
+
+.input-group input:focus {
+    box-shadow: none;
+    border-color: #256F78;
+}

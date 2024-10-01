@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+<nav class="navbar navbar-expand-lg shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('homepage') }}">{{ __('ui.presto') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,7 +22,7 @@
                             <li>
                                 <a class="dropdown-item"
                                     href="{{ route('byCategory', ['category' => $category->id]) }}">
-                                    {{ $category->name }} <!-- Categoria mostrata senza traduzione -->
+                                    {{ $category->name }}
                                 </a>
                             </li>
                             @if (!$loop->last)
@@ -31,15 +31,22 @@
                         @endforeach
                     </ul>
                 </li>
-                <form class="d-flex ms-auto" role="search" action="{{ route('article.search') }}" method="GET">
-                    <div class="input-group">
-                        <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search') }}"
-                            aria-label="search">
-                        <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">
-                            {{ __('ui.search') }}
-                        </button>
-                    </div>
-                </form>
+            </ul>
+
+            <!-- Form di ricerca accanto alle categorie -->
+            <form class="d-flex" role="search" action="{{ route('article.search') }}" method="GET">
+                <div class="input-group">
+                    <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search') }}"
+                        aria-label="search">
+                    <button type="submit" class="input-group-text btn btn-custom" id="basic-addon2">
+                        {{ __('ui.search') }}
+                    </button>
+                </div>
+            </form>
+
+
+            <!-- Spazio aggiuntivo per spostare il resto degli elementi verso destra -->
+            <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -60,11 +67,12 @@
                     </li>
                     @if (Auth::user()->is_revisor)
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
+                            <a class="nav-link btn btn-custom btn-sm position-relative w-sm-25"
                                 href="{{ route('revisor.index') }}">{{ __('ui.revisor_zone') }}
                                 <span
                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::toBeRevisedCount() }}</span>
                             </a>
+
                         </li>
                     @endif
                 @else
@@ -82,6 +90,8 @@
                         </ul>
                     </li>
                 @endauth
+
+                <!-- Icone delle bandiere -->
                 <div class="d-flex align-items-center">
                     <x-_locale lang="it" />
                     <x-_locale lang="en" />

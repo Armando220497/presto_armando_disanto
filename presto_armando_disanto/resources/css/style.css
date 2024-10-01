@@ -1,5 +1,6 @@
-.height-custom {
+.article-section {
     min-height: 60vh;
+    background-color: #49A5B0;
 }
 
 .img-preview {
@@ -8,4 +9,11 @@
     background-size: cover;
     height: 120px;
     width: 120px;
+}
+
+.container-home {
+    background-image: url(media/ecommerce-wallpaper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
