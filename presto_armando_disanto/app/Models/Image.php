@@ -35,20 +35,22 @@ class Image extends Model
         $filename = basename($filePath);
         $file = "{$path}/crop_{$w}x{$h}_{$filename}";
 
-        // Verifica se il file ridimensionato esiste
-        if (Storage::exists($file)) {
-            return Storage::url($file);
-        }
 
         // Se il file non esiste, ritorna l'originale
-        return Storage::url($filePath);
+        return Storage::url($file);
     }
 
     // Metodo per chiamare la funzione statica per ottenere l'URL dell'immagine
     public function getUrl($w = null, $h = null)
     {
+        // Forza la visibilità su public se l'articolo non è approvato
+        if (is_null($this->article->is_accepted)) {
+            return Storage::url($this->path);
+        }
+
         return self::getUrlByFilePath($this->path, $w, $h);
     }
+
 
     protected function casts(): array
     {
