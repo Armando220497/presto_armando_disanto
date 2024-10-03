@@ -49,17 +49,17 @@ class RemoveFaces implements ShouldQueue
 
             foreach ($faces as $face) {
                 $vertices = $face->getBoundingPoly()->getVertices();
-                $bounds = []; // Inizializza l'array $bounds
+                $bounds = [];
 
                 foreach ($vertices as $vertex) {
-                    $bounds[] = [$vertex->getX(), $vertex->getY()]; // Usa $bounds
+                    $bounds[] = [$vertex->getX(), $vertex->getY()];
                 }
 
-                if (count($bounds) >= 4) { // Assicurati di avere abbastanza vertici
+                if (count($bounds) >= 4) {
                     $w = $bounds[2][0] - $bounds[0][0];
                     $h = $bounds[2][1] - $bounds[0][1];
 
-                    $spatieImage = SpatieImage::load($srcPath); // Corretto da $Image a $spatieImage
+                    $spatieImage = SpatieImage::load($srcPath);
 
                     $spatieImage->watermark(
                         base_path("resources/img/smile.png"),
@@ -75,7 +75,7 @@ class RemoveFaces implements ShouldQueue
                 }
             }
         } finally {
-            $imageAnnotator->close(); // Assicurati di chiudere il client
+            $imageAnnotator->close();
         }
     }
 }

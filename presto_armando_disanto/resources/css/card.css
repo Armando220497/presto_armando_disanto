@@ -25,11 +25,6 @@
     /* Occupare tutto lo spazio disponibile */
 }
 
-.card-img-top {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
 
 .card-body {
     flex-grow: 1;
@@ -54,9 +49,40 @@
     background-color: #EE922B;
 }
 
+
+
+/* Effetto al passaggio del mouse sulle card */
+.card-bg {
+    transition: all 0.3s ease-in-out;
+}
+
+.card-bg:hover {
+    transform: translateY(-5px) scale(1.05);
+    /* Solleva leggermente la card e la ingrandisce */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Aggiunge un'ombreggiatura più pronunciata */
+    border-color: #EE922B;
+    /* Cambia il colore del bordo */
+}
+
+
+
+
 .card-img-top {
-    height: 200px;
-    /* Imposta l'altezza fissa */
-    object-fit: cover;
-    /* Mantiene le proporzioni */
+    max-height: 200px !important;
+    /* Altezza massima per evitare tagli */
+    max-width: 100% !important;
+    /* Limita la larghezza */
+    height: auto !important;
+    /* Mantieni le proporzioni */
+    width: auto !important;
+    /* Mantieni le proporzioni */
+    object-fit: contain !important;
+    /* Visualizza l'immagine intera */
+    object-position: center !important;
+    /* Centra l'immagine */
+}
+
+.card {
+    height: auto !important;
 }

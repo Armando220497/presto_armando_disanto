@@ -2,6 +2,10 @@
     background-color: #C6E4EF;
 }
 
+.navbar-brand {
+    color: #EE922B !important;
+}
+
 .btn-custom {
     background-color: #256F78 !important;
     color: white !important;
@@ -13,7 +17,7 @@
 
 .input-group .btn-custom:hover {
     background-color: #EE922B !important;
-    color: white;
+    color: white !important;
 }
 
 .nav-link.btn-custom:hover {
@@ -32,4 +36,15 @@
 .input-group input:focus {
     box-shadow: none;
     border-color: #256F78;
+}
+
+.navbar-nav .nav-link:not(.btn-custom):hover {
+    color: #EE922B !important;
+
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    /* Oppure puoi usare font-weight: bold; */
+    color: #1B6570;
 }

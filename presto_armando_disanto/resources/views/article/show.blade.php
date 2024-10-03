@@ -2,7 +2,12 @@
     <div class="container">
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12">
-                <h1 class="display-4">Dettaglio dell'articolo: {{ $article->title }}</h1>
+                <h1 class="display-4" style="font-weight: 500;">
+                    <span style="color: white;">Dettaglio dell'articolo:</span><br>
+                    <span style="color: #EE922B;">{{ $article->title }}</span>
+                </h1>
+
+
             </div>
         </div>
 
@@ -13,7 +18,8 @@
                         <div class="carousel-inner">
                             @foreach ($article->images as $key => $image)
                                 <div class="carousel-item @if ($loop->first) active @endif">
-                                    <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 rounded shadow"
+                                    <img src="{{ $image->getUrl(300, 300) }}" class="d-block mx-auto rounded shadow"
+                                        style="max-width: 50%; height: auto;"
                                         alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
                                 </div>
                             @endforeach
@@ -32,14 +38,13 @@
                         @endif
                     </div>
                 @else
-                    <img src="https://picsum.photos/300" alt="Nessuna foto inserita dall'utente"
+                    <img src="{{ asset('img/default.png') }}" alt="Nessuna foto inserita dall'utente"
                         class="img-fluid rounded shadow">
                 @endif
             </div>
 
             <div class="col-12 col-md-6 mb-3 text-center">
-
-                <h4 class="fw-bold">Prezzo: {{ $article->price }} Eur</h4>
+                <h4 class="fw-bold">Prezzo: {{ $article->price }} €</h4>
                 <h5>Descrizione</h5>
                 <p>{{ $article->description }}</p>
 

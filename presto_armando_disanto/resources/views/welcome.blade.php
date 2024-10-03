@@ -14,14 +14,11 @@
     <div class="container-fluid text-center bg-body-tertiary container-home">
         <div class="row vh-100 justify-content-center align-items-start">
             <div class="col-12 col-md-6 mt-5">
-                <h1 class="display-6" style="color: white; font-weight: 700;"> {{ __('ui.welcome') }}</h1>
-                <div class="my-3">
-
-                </div>
+                <h1 class="display-6" style="font-weight: 700;">{!! __('ui.welcome') !!}</h1>
+                <div class="my-3"></div>
             </div>
         </div>
     </div>
-
 
     <div class="row article-section justify-content-center align-items-center py-5">
         <div class="text-center py-5">

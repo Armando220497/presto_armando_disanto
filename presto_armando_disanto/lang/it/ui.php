@@ -1,4 +1,5 @@
 <?php
+
 return [
     'presto' => 'Presto.it',
     'home' => 'Home',
@@ -13,6 +14,8 @@ return [
     'register' => 'Registrati',
     'no_articles' => 'Nessun articolo corrispondente alla tua ricerca',
     'detail' => 'Dettaglio',
+    'categories' => 'Categorie',
+
     'category_unavailable' => 'Categoria non disponibile',
     'success' => 'Articolo creato con successo!',
     'title' => 'Titolo:',
@@ -24,7 +27,7 @@ return [
     'image_preview' => 'Anteprima Foto:',
     'error_message' => 'Si è verificato un errore.',
     'success_message' => 'Operazione completata con successo!',
-    'welcome' => 'Benvenuto su Presto.it',
+    'welcome' => '<span style="color: white;">Benvenuto su</span> <span style="color: orange;">Presto.it</span>',
     'category_articles' => 'Articoli della categoria',
     'no_articles_category' => 'Non sono ancora stati creati articoli per questa categoria',
     'search_results' => 'Risultati per la ricerca',
@@ -43,6 +46,4 @@ return [
     'Libri e riviste' => 'Libri e riviste',
     'Accessori' => 'Accessori',
     'Motori' => 'Motori',
-
-
 ];

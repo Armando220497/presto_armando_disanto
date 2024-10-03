@@ -14,7 +14,7 @@ use Livewire\Attributes\Validate;
 use App\Jobs\GoogleVisionLabelImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Jobs\GoogleVisionSafeSearch; // Assicurati di importare il job corretto
+use App\Jobs\GoogleVisionSafeSearch;
 
 class CreateArticleForm extends Component
 {
@@ -54,7 +54,7 @@ class CreateArticleForm extends Component
                 $newFileName = "articles/{$this->article->id}";
                 $newImage = $this->article->images()->create(['path' => $image->store($newFileName, 'public')]);
 
-                // Dispatch del job RemoveFaces con la catena di job
+
                 RemoveFaces::withChain([
                     new ResizeImage($newImage->path, 300, 300),
                     new GoogleVisionSafeSearch($newImage->id),
@@ -62,7 +62,6 @@ class CreateArticleForm extends Component
                 ])->dispatch($newImage->id);
             }
 
-            // Cancella la directory temporanea usata da Livewire
             File::deleteDirectory(storage_path('app/livewire-tmp'));
         }
 

@@ -64,7 +64,7 @@
                                     <div class="row">
                                         @for ($i = 0; $i < 3; $i++)
                                             <div class="col-4 mb-4">
-                                                <img src="https://picsum.photos/600" alt="immagine segnaposto"
+                                                <img src="{{ asset('img/default.png') }}" alt="immagine segnaposto"
                                                     class="img-fluid rounded shadow">
                                             </div>
                                         @endfor

@@ -1,3 +1,7 @@
+/* Importazione del Font Google */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Altri File CSS */
 @import '/resources/css/style.css';
 @import '/resources/css/all_articles.css';
 @import '/resources/css/public-article.css';
@@ -7,3 +11,8 @@
 @import '/resources/css/card.css';
 @import 'bootstrap';
 @import 'bootstrap-icons';
+
+/* Applicazione del Font a Tutto il Sito */
+body {
+    font-family: 'Roboto', sans-serif;
+}
