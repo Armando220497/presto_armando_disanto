@@ -33,7 +33,6 @@
                 </li>
             </ul>
 
-            <!-- Form di ricerca accanto alle categorie -->
             <form class="d-flex" role="search" action="{{ route('article.search') }}" method="GET">
                 <div class="input-group">
                     <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search') }}"
@@ -45,7 +44,6 @@
             </form>
 
 
-            <!-- Spazio aggiuntivo per spostare il resto degli elementi verso destra -->
             <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item dropdown">
