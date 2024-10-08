@@ -21,6 +21,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    background-color: #C6E4EF !important;
 }
 
 .card-body {
@@ -60,6 +61,7 @@
 }
 
 .card-img-top {
+    margin-top: 8px !important;
     max-height: 200px !important;
     max-width: 100% !important;
     height: auto !important;
