@@ -22,7 +22,7 @@
 
     <div class="container py-5">
         <div class="text-center py-5">
-            <h2 style="color:white; font-weight: 700;">I nostri ultimi articoli</h2>
+            <h2 style="color:white; font-weight: 700;">{{ __('ui.latest_articles') }}</h2>
         </div>
 
         <!-- Inizio sezione articoli con griglia Bootstrap -->

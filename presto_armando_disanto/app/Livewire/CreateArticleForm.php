@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use Spatie\Image\Enums\Unit;
-
 use App\Jobs\RemoveFaces;
 use App\Models\Article;
 use Livewire\Component;
@@ -34,7 +33,7 @@ class CreateArticleForm extends Component
 
     public function mount()
     {
-        $this->category = null;
+        $this->category = ""; // Imposta la categoria come vuota
         $this->images = [];
     }
 
@@ -54,7 +53,6 @@ class CreateArticleForm extends Component
                 $newFileName = "articles/{$this->article->id}";
                 $newImage = $this->article->images()->create(['path' => $image->store($newFileName, 'public')]);
 
-
                 RemoveFaces::withChain([
                     new ResizeImage($newImage->path, 300, 300),
                     new GoogleVisionSafeSearch($newImage->id),
@@ -66,12 +64,16 @@ class CreateArticleForm extends Component
         }
 
         session()->flash('success', 'Articolo creato correttamente');
-        $this->reset(['title', 'description', 'price', 'category', 'images']);
+        $this->reset(['title', 'description', 'price', 'images', 'temporary_images']);
+        $this->category = ""; // Reimposta esplicitamente la categoria a vuoto dopo il reset
     }
 
     public function render()
     {
-        $categories = Category::all(); // Carica le categorie
+        $categories = Category::all()->map(function ($category) {
+            $category->translated_name = __($category->name);
+            return $category;
+        });
         return view('livewire.create-article-form', compact('categories')); // Passa le categorie alla vista
     }
 

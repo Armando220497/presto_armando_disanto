@@ -14,15 +14,12 @@
 }
 
 .btn-revisor {
-    background-color: #256F78 !important;
+    background-color: #EE922B !important;
     /* Colore di sfondo personalizzato */
     color: white;
     /* Colore del testo */
 }
 
 .btn-revisor:hover {
-    background-color: #EE922B !important;
-    /* Colore al passaggio del mouse */
-    color: white;
-    /* Mantieni il colore del testo bianco */
+    transform: scale(1.1);
 }

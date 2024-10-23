@@ -31,16 +31,19 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="category" class="form-label">{{ __('ui.select_category') }}</label>
             <select id="category" wire:model="category" class="form-control @error('category') is-invalid @enderror">
                 <option value="" disabled selected>{{ __('ui.select_category') }}</option>
                 @foreach ($categories as $cat)
-                    <option value="{{ $cat->id }}" {{ $category === $cat->id ? 'selected' : '' }}>
-                        {{ $cat->name }}</option>
+                    <option value="{{ $cat->id }}">{{ $cat->translated_name }}</option>
                 @endforeach
+            </select>
+            
             </select>
             @error('category')
                 <p class="fst-italic text-danger">{{ $message }}</p>
             @enderror
+            
         </div>
 
         <div class="mb-3">
@@ -68,9 +71,8 @@
                 </div>
             @endif
         </div>
-
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">{{ __('ui.create') }}</button>
+            <button style="background-color: #EE922B; border: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" type="submit" class="btn btn-primary">{{ __('ui.create') }}</button>
         </div>
     </form>
 </div>

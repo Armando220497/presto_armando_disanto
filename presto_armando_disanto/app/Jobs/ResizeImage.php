@@ -36,8 +36,8 @@ class ResizeImage implements ShouldQueue
 
             ->watermark(
                 base_path('resources/img/watermark.png'),
-                width: 50,
-                height: 50,
+                width: 100,
+                height: 100,
                 paddingX: 5,
                 paddingY: 5,
                 paddingUnit: Unit::Percent

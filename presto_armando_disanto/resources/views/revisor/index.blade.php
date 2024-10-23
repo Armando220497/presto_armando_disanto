@@ -1,5 +1,16 @@
 <x-layout>
     <div class="container-fluid pt-5">
+        <!-- Mostra i messaggi di successo o errore -->
+        @if (session()->has('message'))
+            <div class="alert alert-success text-center">
+                <span class="fw-bold" style="color: green !important;">{{ session('message') }}</span>
+            </div>
+        @elseif (session()->has('error'))
+            <div class="alert alert-danger text-center">
+                <span class="fw-bold" style="color: red !important;">{{ session('error') }}</span>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-3">
                 <div class="rounded shadow bg-body-secondary">
@@ -86,13 +97,6 @@
                                 <button class="btn btn-success fw-bold">Accetta</button>
                             </form>
                         </div>
-
-                        <!-- Messaggio di conferma azione -->
-                        @if (session()->has('message'))
-                            <div class="alert alert-success text-center">
-                                {{ session('message') }}
-                            </div>
-                        @endif
                     </div>
                 </div>
             @else
